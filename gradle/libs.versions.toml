@@ -1,0 +1,10 @@
+[versions]
+cli = "0.3.6"
+upchain = "1.0.0"
+
+[libraries]
+kotlinx-cli = { module = "org.jetbrains.kotlinx:kotlinx-cli", version.ref = "cli" }
+upchain-core = { module = "org.hnau.upchain:core", version.ref = "upchain" }
+upchain-sync-core = { module = "org.hnau.upchain:sync-core", version.ref = "upchain" }
+upchain-sync-server = { module = "org.hnau.upchain:sync-server", version.ref = "upchain" }
+upchain-sync-client = { module = "org.hnau.upchain:sync-client", version.ref = "upchain" }
