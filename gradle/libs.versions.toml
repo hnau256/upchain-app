@@ -1,6 +1,6 @@
 [versions]
 cli = "0.3.6"
-upchain = "1.1.0"
+upchain = "1.1.1"
 
 [libraries]
 kotlinx-cli = { module = "org.jetbrains.kotlinx:kotlinx-cli", version.ref = "cli" }
