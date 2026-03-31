@@ -1,6 +1,7 @@
 package org.hnau.upchainapp.client
 
 import co.touchlab.kermit.Logger
+import co.touchlab.kermit.platformLogWriter
 import kotlinx.cli.ArgParser
 import kotlinx.cli.ArgType
 import kotlinx.cli.required
@@ -21,6 +22,7 @@ private val logger = Logger.withTag("Main")
 fun main(
     args: Array<String>,
 ) {
+    Logger.setLogWriters(platformLogWriter())
 
     val parser = ArgParser("Upchain client")
     val upchainsFile by parser.option(

@@ -1,5 +1,7 @@
 package org.hnau.upchainapp.server
 
+import co.touchlab.kermit.Logger
+import co.touchlab.kermit.platformLogWriter
 import kotlinx.cli.ArgParser
 import kotlinx.cli.ArgType
 import kotlinx.cli.required
@@ -14,6 +16,7 @@ import org.hnau.upchain.sync.server.http.httpSyncServer
 fun main(
     args: Array<String>,
 ) {
+    Logger.setLogWriters(platformLogWriter())
 
     val parser = ArgParser("Upchain server")
     val upchainsDir by parser.option(
