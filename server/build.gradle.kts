@@ -21,7 +21,3 @@ dependencies {
 application {
     mainClass = "org.hnau.upchainapp.server.MainKt"
 }
-
-tasks.installDist {
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-}

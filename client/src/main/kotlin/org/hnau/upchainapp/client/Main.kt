@@ -45,8 +45,8 @@ fun main(
         val api = HttpSyncClient(
             scope = clientScope,
             address = ServerAddress(serverAddress),
-            port = ServerPort(8080),
-            scheme = HttpScheme.Http,
+            port = ServerPort(443),
+            scheme = HttpScheme.Https,
         )
 
         repository
