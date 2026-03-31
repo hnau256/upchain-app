@@ -7,8 +7,7 @@ plugins {
 dependencies {
     implementation(libs.kotlinx.cli)
     implementation(libs.upchain.core)
-    implementation(libs.upchain.sync.core)
-    implementation(libs.upchain.sync.client)
+    implementation(libs.upchain.sync.client.http)
 }
 
 application {

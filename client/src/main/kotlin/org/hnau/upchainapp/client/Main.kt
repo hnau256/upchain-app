@@ -7,8 +7,9 @@ import kotlinx.coroutines.runBlocking
 import org.hnau.upchain.core.UpchainId
 import org.hnau.upchain.core.repository.file.upchain.fileBased
 import org.hnau.upchain.core.repository.upchain.UpchainRepository
-import org.hnau.upchain.sync.client.ServerAddress
-import org.hnau.upchain.sync.client.sync
+import org.hnau.upchain.sync.client.core.sync
+import org.hnau.upchain.sync.client.http.HttpSyncClient
+import org.hnau.upchain.sync.core.ServerAddress
 import org.hnau.upchain.sync.core.ServerPort
 
 fun main(
@@ -16,10 +17,6 @@ fun main(
 ) {
 
     val parser = ArgParser("Upchain client")
-    val port by parser.option(
-        type = ArgType.Int,
-        shortName = "p",
-    )
     val upchainsFile by parser.option(
         type = ArgType.String,
         shortName = "f",
@@ -36,11 +33,16 @@ fun main(
             filename = upchainsFile,
         )
 
+        val api = HttpSyncClient(
+            scope = this,
+            address = ServerAddress(serverAddress),
+            port = ServerPort(8080),
+        )
+
         repository
             .sync(
                 id = upchainsFile.split("/").last().let(UpchainId.stringMapper.direct),
-                remotePort = port?.let(::ServerPort) ?: ServerPort.default,
-                remoteAddress = ServerAddress(serverAddress)
+                api = api,
             )
             .getOrThrow()
     }
