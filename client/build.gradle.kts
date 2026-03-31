@@ -1,6 +1,14 @@
 plugins {
-    id(hnau.plugins.kotlin.serialization.get().pluginId)
-    id(hnau.plugins.hnau.jvm.get().pluginId)
+    id(
+        hnau.plugins.kotlin.serialization
+            .get()
+            .pluginId,
+    )
+    id(
+        hnau.plugins.hnau.jvm
+            .get()
+            .pluginId,
+    )
     application
 }
 
@@ -12,4 +20,8 @@ dependencies {
 
 application {
     mainClass = "org.hnau.upchainapp.client.MainKt"
+}
+
+tasks.installDist {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
