@@ -9,7 +9,7 @@ import kotlinx.coroutines.runBlocking
 import org.hnau.upchain.core.repository.file.upchains.fileBased
 import org.hnau.upchain.core.repository.upchains.UpchainsRepository
 import org.hnau.upchain.sync.core.ServerPort
-import org.hnau.upchain.sync.server.core.ServerSyncApi
+import org.hnau.upchain.sync.server.core.ServerEngine
 import org.hnau.upchain.sync.server.core.repository.toCreateOnly
 import org.hnau.upchain.sync.server.http.httpSyncServer
 
@@ -32,13 +32,13 @@ fun main(
             dir = upchainsDir,
         )
 
-        val api = ServerSyncApi(
+        val engine = ServerEngine(
             scope = this,
             repository = repository.toCreateOnly(this),
         )
 
         httpSyncServer(
-            api = api,
+            engine = engine,
             port = ServerPort(8080),
         )
     }
